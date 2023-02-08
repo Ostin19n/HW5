@@ -7,7 +7,7 @@ int SumOddNum(int[] array)
 {   
     int size = array.Length;
     int result = 0;
-    for (int i = 1; i < size; ++i)
+    for (int i = 1; i < size; i =+ 2)
     {
         if (array[i] % 2 == 0)
         {
