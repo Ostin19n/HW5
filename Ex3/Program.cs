@@ -2,12 +2,11 @@
 
 // [3 7 22 2 78] -> 76
 
-double MinMax (double[] array)
+double MinMax(double[] array)
 {
     double size = array.Length;
     double max = 0;
     double min = 0;
-    double difference = max - min;
     for (int z = 0; z < array.Length; z++)
 {
     if (array[z] > max)
@@ -19,13 +18,13 @@ double MinMax (double[] array)
             min = array[z];
         }
 }
-    return difference;
+    return 
 }
 
-double[] GetArray(double size, double min, double max)
+double[] GetArray(int size, int min, int max)
 {
     double[] emptyArray = new double [size];
-    for(double i = 0; i < size; i++)
+    for(int i = 0; i < size; i++)
     {
         emptyArray[i] = new Random().Next(min, max);
 
@@ -41,4 +40,4 @@ Console.WriteLine(String.Join(" " , array));
 
 double FindMinMax = MinMax(array);
 
-Console.WriteLine($"Разница между максимальным и минимальным значением = {MinMax}");
+Console.WriteLine($"Разница между максимальным и минимальным значением = {FindMinMax}");

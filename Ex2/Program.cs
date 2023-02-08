@@ -3,40 +3,27 @@
 // [3, 7, 23, 12] -> 19
 
 // [-4, -6, 89, 6] -> 0
-int SumOddNum(int[] array)
-{   
-    int size = array.Length;
-    int result = 0;
-    for (int i = 1; i < size; i =+ 2)
-    {
-        if (array[i] % 2 == 0)
-        {
-            result += array[i];
-        }
-        
-     }
-    return result;
-}
-
-
-int[] GetArray(int size, int start, int finish)
+int[] ArrayGeneratorNumber(int count, int min, int max)
 {
-    int [] emptyArray = new int[size];
-    for(int index = 0; index < size; index++)
-    {
-        emptyArray[index] = new Random().Next(start, finish+1);
-
-    }
-    return emptyArray;
+    int[] arrayList = new int[count];
+    for (int i = 0; i < count; i++)
+       arrayList[i] = new Random().Next(min, max);
+    return arrayList;
 }
 
+int[] arrayList = ArrayGeneratorNumber(4, -100, 101);
 
-// генерируем массив
-int[] array = GetArray(4, -100, 100);
+int countSumChetnihChisel = 0;
+for (int i = 1; i < arrayList.Length; i += 2)
+    countSumChetnihChisel += arrayList[i];
+        
 
-Console.WriteLine(String.Join(" " , array));
-
-// сумма  чисел
-int SumNum = SumOddNum(array);
-
-Console.Write($"Сумма элементов -> {SumNum}");
+Console.Write("[");
+for (int n = 0; n < arrayList.Length; n++)
+{
+    if(n < arrayList.Length - 1)
+        Console.Write($"{arrayList[n]}, ");
+    else
+        Console.Write($"{arrayList[n]}");
+}
+Console.WriteLine($"] -> Сумма чисел на нечётных позициях: {countSumChetnihChisel}");
