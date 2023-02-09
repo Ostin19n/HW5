@@ -44,7 +44,7 @@ void GetDifference(double [] array)
     Console.WriteLine($"Разница между максимальным и минимальным значением = {diff}.");
 }
 
-double[] array = DoubleArray(199,108,4);              
+double[] array = DoubleArray(-10,100,4);              
                                                    
 PrintArray(array);                                
 
