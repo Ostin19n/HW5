@@ -1,43 +1,47 @@
 ﻿// Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 
 // [3 7 22 2 78] -> 76
+int arrayLenght = 10;
+int rndDoubleLenght = 101;
+// double rndDoubleLenghtMin = -rndDoubleLenghtMax;
 
-double MinMax(double[] array)
+double[] arrayDoubleList = new double[arrayLenght];
+
+for (int i = 0; i < arrayLenght; i++)
 {
-    double size = array.Length;
-    double max = 0;
-    double min = 0;
-    for (int z = 0; z < array.Length; z++)
-{
-    if (array[z] > max)
-        {
-            max = array[z];
-        }
-    if (array[z] < min)
-        {
-            min = array[z];
-        }
-}
-    return 
+    arrayDoubleList[i] = new Random().Next(0, rndDoubleLenght);
 }
 
-double[] GetArray(int size, int min, int max)
+
+
+for (int i = 0; i < arrayDoubleList.Length; i++)
 {
-    double[] emptyArray = new double [size];
-    for(int i = 0; i < size; i++)
+    Console.Write($"{arrayDoubleList[i]} ");
+}
+Console.WriteLine();
+
+
+double[] minIndex = new double[] {arrayDoubleList[0], 0};
+double[] maxIndex = new double[] {arrayDoubleList[0], 0};
+for (int i = 1; i < arrayDoubleList.Length; i++)
+{
+    if(minIndex[0] > arrayDoubleList[i])
     {
-        emptyArray[i] = new Random().Next(min, max);
-
+        minIndex[0] = arrayDoubleList[i];
+        minIndex[1] = i;
     }
-    return emptyArray;
+    else if (maxIndex[0] < arrayDoubleList[i])
+    {
+        maxIndex[0] = arrayDoubleList[i];
+        maxIndex[1] = i;
+    }
 }
 
+Console.WriteLine($"minValue: {minIndex[0]}, maxValue: {maxIndex[0]}\n" 
+                 +$"minIndex: {minIndex[1]}, maxIndex: {maxIndex[1]}");
 
-// генерируем массив
-double [] array = GetArray(4, 0, 99);
+double theDifferenceBetweenTheMaximumAndMinimumInTheValue = Math.Abs(maxIndex[0] - minIndex[0]);
+int theDifferenceBetweenTheMaximumAndMinimumInTheIndex = Math.Abs(Convert.ToInt32(maxIndex[1]) - Convert.ToInt32(minIndex[1]));
 
-Console.WriteLine(String.Join(" " , array));
-
-double FindMinMax = MinMax(array);
-
-Console.WriteLine($"Разница между максимальным и минимальным значением = {FindMinMax}");
+Console.WriteLine($"Разница между Min и Max в значение: {theDifferenceBetweenTheMaximumAndMinimumInTheValue}\n"
+                 +$"Растояние между Min и Max в индексе: {theDifferenceBetweenTheMaximumAndMinimumInTheIndex}");
