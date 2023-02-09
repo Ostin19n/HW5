@@ -3,40 +3,47 @@
 // [3, 7, 23, 12] -> 19
 
 // [-4, -6, 89, 6] -> 0
-int SumNumber(int[] arrayList)
-{
-    int size = arrayList.Length;
-    int SumNumbers = 0;
-    for (int i = 1; i < size; i += 2)
+
+
+int[] array = GetArray(-10,10,4);              
+                                                   
+PrintArray(array);                                
+
+int sum = SumElementsOddIndexes(array);
+
+Console.WriteLine($"Сумма элементов = {sum}.");
+
+
+
+
+int[] GetArray(int min, int max, int size)   
+{                                                   
+    Random random = new Random();                   
+    int[] array = new int [size];                  
+                                                    
+    for (var i = 0; i < array.Length; i++)          
     {
-    SumNumbers += arrayList[i];
+        array[i] = random.Next(min, max + 1);       
     }
-    return SumNumbers;
-}
-   
+    return array;                                  
+} 
 
-int[] GetArray(int size, int min, int max)
+
+void PrintArray(int[] array)                       
 {
-    int[] arrayList = new int[size];
-    for (int i = 0; i < size; i++)
-       arrayList[i] = new Random().Next(min, max);
-    return arrayList;
-}
+     Console.WriteLine(@"[{0}]", string.Join(",", array)); 
+}                                         
 
 
-int[] arrayList = GetArray(4, -100, 101);
-
-Console.WriteLine(String.Join(" " , arrayList));
-
-int FindSumNumber = SumNumber(arrayList);
-
-
-
-for (int n = 0; n < arrayList.Length; n++)
+int SumElementsOddIndexes(int[] array)
 {
-    if(n < arrayList.Length - 1)
-        Console.Write($"{arrayList[n]}, ");
-    else
-        Console.Write($"{arrayList[n]}");
+    int sum = 0;
+    for (var i = 0; i < array.Length; i++)
+    {
+        if(i % 2 != 0)
+        {
+            sum = array[i] + sum ;
+        }
+    }
+    return sum;
 }
-Console.WriteLine($" -> Сумма чисел на нечётных позициях: {FindSumNumber}");
